@@ -1,5 +1,5 @@
 #include <iostream>
-
+// squawker is just a random class, you can replace it with any class name 
 class Squawker
 {
 private:

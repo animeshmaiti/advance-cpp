@@ -1,23 +1,9 @@
-#include <iostream>
-#include "Squawker.h"
-
-void allocate(){
-    try
-    {
-        Squawker inner{"Inner"};
-        Squawker *pS{new Squawker{"Heap"}};
-        throw std::runtime_error("Error");
-        delete pS;
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << e.what() << "\n";
-    }
-}
+// #include "function.h"
+#include "function_raii.h"
 
 int main(){
     Squawker noname;
-    Squawker named{"Named"};
+    // Squawker named{"Named"};
     
     allocate();
     return 0;
