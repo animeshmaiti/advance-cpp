@@ -71,5 +71,33 @@ int main(){
     auto seventyseven=find(begin(doubles),end(doubles),77.2);  
     *seventyseven=7.2;
 
+    double product=1;
+    for (auto &i : doubles)
+    {
+        product *= i;
+    }
+    // double product2 = accumulate(begin(doubles),end(doubles),1.0,
+    //     [](double partialresult,double d){return partialresult*2;});//1.0x2=2.0x2=4.0x2=8.0x2=16.0d
+    double product2 = accumulate(begin(doubles),end(doubles),1.0,
+        [](double partialresult,double d){return partialresult*d;});
+
+    // this is for odd function
+    //count according to lambda function
+    int numberOdds=count_if(begin(integer),end(integer),[](int i){return i%2==1;});
+    vector<int>odds(numberOdds);
+    // copy elements to odds according to lambda function
+    copy_if(begin(integer),end(integer),begin(odds),[](int i){return i%2==1;});// 3rd param is where to store
+
+    // this is for even function
+    auto is_even=[](int i){return i%2==0;};// lambda fuction
+    int numberEvens=count_if(begin(integer),end(integer),is_even);
+    vector<int> evens(numberEvens);
+    copy_if(begin(integer),end(integer),begin(evens),is_even);
+
+    string sentence="this is a sentence being stored in astd::string instance";
+    int numberSpace=count(begin(sentence),end(sentence),' ');
+    auto colon=find(begin(sentence),end(sentence),':');
+    char at_colon=*colon;
+
     return 0;
 }
